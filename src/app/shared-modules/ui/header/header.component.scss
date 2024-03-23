@@ -1,0 +1,11 @@
+.toolbar{
+    display: flex;
+
+    app-profile ::ng-deep.profile{
+        width: 25px;
+    }
+
+    &__title{
+        text-align: center;
+    }
+}

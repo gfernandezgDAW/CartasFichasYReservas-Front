@@ -1,6 +1,10 @@
 {
   "typescript.preferences.autoImportFileExcludePatterns": ["@ionic/angular/common", "@ionic/angular/standalone"],
-  "eslint.workingDirectories": [
-    "src"
-  ]
+  "editor.formatOnSave": true,
+  "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
 }

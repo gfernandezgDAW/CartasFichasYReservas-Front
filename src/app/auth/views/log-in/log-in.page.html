@@ -1,0 +1,22 @@
+<ion-content class="log-in">
+    <div class="log-in__main-div">
+        <ion-card class="log-in__form">
+            <ion-card-content class="log-in__main-div__form__content">
+                <img class="log-in__main-div__form__content__logo" src="../../../../assets/logo.svg">
+                <form class="log-in__main-div__form__content__form" [formGroup]="logInForm" (submit)="logInSubmit()">
+                    <div>
+                        <ion-title class="log-in__main-div__form__content__title">Inicio Sesión - Aplicación</ion-title>
+                        <ion-item>
+                            <ion-input label="Correo" type="email" label-placement="floating" placeholder="ejemplo@gmail.com" formControlName="email"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input label="Contraseña"  type="password" label-placement="floating" placeholder="***" formControlName="password"></ion-input>
+                        </ion-item>
+                    </div>
+                    <ion-button type="submit" [disabled]="!logInForm.valid">Iniciar sesión</ion-button>
+                </form>
+                <a (click)="navigateToSignUp()">¿No tienes cuenta?</a>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

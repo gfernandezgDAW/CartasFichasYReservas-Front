@@ -1,0 +1,25 @@
+<app-header title="Inicio"></app-header>
+<ion-content class="home">
+    <div class="home__main-div">
+        <ion-card>
+            <ion-card-content class="home__main-div__content">
+                <img class="home__main-div__content__img" src="../../../assets/logo.svg"> 
+                <ion-text class="home__main-div__content__msg">{{getWelcomeTitle()}}</ion-text>
+                <swiper-container #swiper class="home__main-div__content__swiper" [pagination]="true" autoplay="true" [options]="{initialSlide: 0, loop: true, autoplay: 4000}">
+                    <swiper-slide>
+                        <img src="../../../assets/home-game.png">
+                        <ion-text>Descubre</ion-text>
+                        <div>Consulta el listado de juegos y encuentra los que más se ajusten a tus gustos. Siempre disponemos de las ultimas novedades.</div>
+                    </swiper-slide>
+                    <swiper-slide>
+                        <img src="../../../assets/home_playing.jpg">
+                        <ion-text>Disfruta</ion-text>
+                        <div>Reserva un sitio y un juego y te aseguraras de pasar un buen rato con amigos y/o familiares.</div>
+                    </swiper-slide>
+                </swiper-container>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>
+
+

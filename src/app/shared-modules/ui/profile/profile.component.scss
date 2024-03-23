@@ -1,0 +1,33 @@
+.profile{
+    &__main{
+            display: flex;
+            :hover{
+                cursor: pointer;
+            }
+
+            &__img{
+                height: auto;
+                width: 25px;
+            }
+
+            &__text{
+                color: white;
+                padding-left: 10px;
+            }
+    }
+    
+    &__popover{
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-direction: row;
+
+        &__icon{
+            padding-right: 5px;
+        }
+
+        p{
+            padding-top: 2px;
+        }
+    }
+}

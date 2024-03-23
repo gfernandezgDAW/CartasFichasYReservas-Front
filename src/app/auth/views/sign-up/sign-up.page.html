@@ -1,0 +1,30 @@
+<ion-content class="register">
+    <div class="register__main-div">
+        <ion-card class="register__form">
+            <ion-card-content class="register__main-div__form__content">
+                <img class="register__main-div__form__content__logo" src="../../../../assets/logo.svg">
+                <form class="register__main-div__form__content__form" [formGroup]="signUpForm" (submit)="registerSubmit()">
+                    <div>
+                        <ion-item>
+                            <ion-input label="Nombre de usuario" type="text" label-placement="floating" placeholder="Gabriel Fernández" formControlName="username"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input label="DNI/NIF" type="text" label-placement="floating" placeholder="11111111A" formControlName="dni"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input label="Correo" type="email" label-placement="floating" placeholder="ejemplo@gmail.com" formControlName="email"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input label="Contraseña"  type="password" label-placement="floating" placeholder="***" formControlName="password"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input label="Repetir contraseña"  type="password" label-placement="floating" placeholder="***" formControlName="checkPassword"></ion-input>
+                        </ion-item>
+                    </div>
+                    <ion-button type="submit" [disabled]="!signUpForm.valid">Crear cuenta</ion-button>
+                </form>
+                <a (click)="navigateToLogIn()">Volver al inicio</a>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

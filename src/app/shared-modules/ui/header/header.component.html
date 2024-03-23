@@ -1,0 +1,6 @@
+<ion-header *ngIf="isMobile" mode="ios">
+  <ion-toolbar class="toolbar" color="primary">
+    <ion-title class="toolbar__title" *ngIf="isMobile">{{title}}</ion-title>
+    <app-profile class="toolbar__profile"></app-profile>
+  </ion-toolbar>
+</ion-header>

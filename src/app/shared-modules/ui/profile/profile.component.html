@@ -1,0 +1,20 @@
+<div class="profile">
+    <div class="profile__main" id="profile-click-trigger">
+        <img class="profile__main__img" src="./../../../assets/avatar.svg">
+        <p *ngIf="!isMobile" class="profile__main__text">{{email}}</p>
+    </div>
+    <ion-popover trigger="profile-click-trigger" [dismissOnSelect]="true">
+        <ng-template>
+            <ion-content>
+              <ion-list>
+                <ion-item (click)="logOff()" [button]="true" [detail]="false">
+                    <div class="profile__popover">
+                        <ion-icon class="profile__popover__icon" name="log-out-outline" style="zoom:1.4;" color="primary"></ion-icon>
+                        <p>Cerrar sesión</p>
+                    </div>
+                </ion-item>
+              </ion-list>
+            </ion-content>
+          </ng-template>
+    </ion-popover>
+</div>

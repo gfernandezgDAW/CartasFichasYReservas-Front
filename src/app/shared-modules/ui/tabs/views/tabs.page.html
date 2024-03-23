@@ -1,0 +1,23 @@
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar [slot]="isMobile ? 'bottom' : 'top'" [color]="!isMobile ? 'primary' : ''" mode="ios">
+      <app-profile *ngIf="!isMobile"  [class.profile_desktop] = "!isMobile"></app-profile>
+      <ion-tab-button tab="home">
+        <ion-icon name="home"></ion-icon>
+        Inicio
+      </ion-tab-button>
+      <ion-tab-button tab="bookings">
+        <ion-icon name="calendar"></ion-icon>
+        Reservas  
+      </ion-tab-button>
+      <ion-tab-button tab="board-games">
+        <ion-icon name="list"></ion-icon>
+        Juegos
+      </ion-tab-button>
+      <ion-tab-button tab="suggestions">
+        <ion-icon name="chatbox-ellipses"></ion-icon>
+        Sugerencias
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

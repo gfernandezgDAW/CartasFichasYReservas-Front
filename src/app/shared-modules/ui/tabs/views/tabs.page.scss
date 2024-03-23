@@ -1,0 +1,12 @@
+ion-content {
+    --overflow: hidden
+}
+
+app-profile ::ng-deep.profile{
+    width: min-content;
+}
+
+.profile_desktop{
+    padding-left: 10px;
+    width: 45vw;
+}
