@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class HomePage {
   email = '';
   constructor() {
-    const loggedAsStorage = localStorage.getItem('cfyrLoggedAs');
+    const loggedAsStorage = localStorage.getItem('cfyrAppLoggedAs');
     if (!loggedAsStorage) {
       return;
     }

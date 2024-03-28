@@ -9,7 +9,7 @@ export class IsAuthenticatedGuard implements CanActivate {
   constructor(private router: Router, private utilsService: UtilsService) {}
 
   canActivate() {
-    const tokenStorage = localStorage.getItem('cfyrToken');
+    const tokenStorage = localStorage.getItem('cfyrAppToken');
     if (!tokenStorage) {
       this.utilsService.displayToast('Debes iniciar sesión', 'error');
       this.router.navigate(['']);

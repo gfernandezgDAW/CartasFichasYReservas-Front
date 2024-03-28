@@ -38,8 +38,8 @@ export class LogInPage {
       .pipe(first())
       .subscribe(
         (res) => {
-          localStorage.setItem('cfyrToken', JSON.stringify(res));
-          localStorage.setItem('cfyrLoggedAs', emailTrimmed);
+          localStorage.setItem('cfyrAppToken', JSON.stringify(res));
+          localStorage.setItem('cfyrAppLoggedAs', emailTrimmed);
           this.logInForm.reset();
           this.router.navigate(['menu', 'home']);
           this.utilsService.displayToast('Sesión iniciada con exito', 'info');

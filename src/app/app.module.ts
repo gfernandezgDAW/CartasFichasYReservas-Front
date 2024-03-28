@@ -4,16 +4,18 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { register } from 'swiper/element/bundle';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { BoardGamesModule } from './board-games/board-games.module';
 import { BookignsModule } from './bookings/bookings.module';
+import { AuthInterceptor } from './common/interceptors/auth.interceptor';
+import { JwtInterceptor } from './common/interceptors/jwt.interceptor';
 import { SharedModule } from './common/shared.module';
 import { UtilsService } from './common/utils.service';
 import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { HomeModule } from './home/home.module';
-
 import { TabsModule } from './shared-modules/ui/tabs/tabs.module';
 import { SuggestionsModule } from './suggestions/suggestions.module';
 
@@ -37,6 +39,8 @@ register();
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     UtilsService,
     IsAuthenticatedGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

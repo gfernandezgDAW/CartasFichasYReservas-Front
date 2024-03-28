@@ -1,6 +1,6 @@
 import { Component, HostListener, Injectable, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
+import { AuthUtilsService } from '../../../auth/auth-utils.service';
 import { UtilsService } from '../../../common/utils.service';
 
 @Component({
@@ -13,9 +13,12 @@ export class ProfileComponent {
   @Input() title: string;
   email = '';
   isMobile = false;
-  constructor(private utilsService: UtilsService, private router: Router) {
+  constructor(
+    private utilsService: UtilsService,
+    public authUtilsService: AuthUtilsService
+  ) {
     this.deviceIsMobile();
-    const loggedAsStorage = localStorage.getItem('cfyrLoggedAs');
+    const loggedAsStorage = localStorage.getItem('cfyrAppLoggedAs');
     if (!loggedAsStorage) {
       return;
     }
@@ -30,11 +33,5 @@ export class ProfileComponent {
 
   deviceIsMobile() {
     this.isMobile = this.utilsService.deviceIsMobile();
-  }
-
-  logOff() {
-    localStorage.removeItem('cfyrToken');
-    localStorage.removeItem('cfyrLoggedAs');
-    this.router.navigate(['']);
   }
 }

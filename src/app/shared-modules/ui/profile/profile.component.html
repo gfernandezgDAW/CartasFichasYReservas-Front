@@ -7,7 +7,7 @@
         <ng-template>
             <ion-content>
               <ion-list>
-                <ion-item (click)="logOff()" [button]="true" [detail]="false">
+                <ion-item (click)="authUtilsService.logOff()" [button]="true" [detail]="false">
                     <div class="profile__popover">
                         <ion-icon class="profile__popover__icon" name="log-out-outline" style="zoom:1.4;" color="primary"></ion-icon>
                         <p>Cerrar sesión</p>
