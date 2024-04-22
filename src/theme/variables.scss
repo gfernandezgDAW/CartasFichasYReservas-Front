@@ -1,6 +1,3 @@
-// Ionic Variables and Theming. For more info, please see:
-// http://ionicframework.com/docs/theming/
-
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
@@ -236,15 +233,61 @@
 }
 
 html {
-  /* 
-   * For more information on dynamic font scaling, visit the documentation:
-   * https://ionicframework.com/docs/layout/dynamic-font-scaling
-   */
   --ion-dynamic-font: var(--ion-default-dynamic-font);
 }
+
+$mobile-max-width: 768px;
 
 // Estilos Ionic sobreescritos
 ion-button {
   text-transform: none;
 }
 
+ion-content{
+  width: 100%;
+  height: 100%;
+  --background: #fff url("../assets/fondo.png") no-repeat center center / cover;
+
+    div.main-div{
+      display: flex;
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+      align-items: center;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+
+      ion-card.main-card{
+        margin: 10px;
+        height: inherit;
+        width: auto;
+      }
+    }
+}
+
+ion-modal.modal-default.show-modal:last-of-type {
+  --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.2) !important;
+  --backdrop-opacity: var(--ion-backdrop-opacity, 0.22) !important;
+}
+
+//Estilos custom
+ion-modal.modal-autoheight {
+
+  &.bottom {
+      align-items: flex-end;
+  }
+
+  --height: auto;
+  .ion-page {
+      position: relative;
+      display: block;
+      contain: content;
+
+      .modal-content-div {
+          max-height: 80vh;
+          overflow: auto;
+          padding: 10px;
+      }
+  }
+}

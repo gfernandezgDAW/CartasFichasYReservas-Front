@@ -1,0 +1,73 @@
+.board-game{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title{
+        font-weight: bold;
+        font-size: 20px;
+        color: var(--ion-color-primary);
+        margin-top: 5px;
+    }
+
+    &__introduction{
+        border-bottom: 1px solid var(--ion-color-primary);
+        padding-bottom: 5px;
+        width: 100%;
+    }
+
+    &__img{
+        margin: 10px;
+        height: auto;
+        object-fit: contain;
+    }
+
+    &__details{
+        margin: 10px 0px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+
+        &__item{
+            margin: 0px 7.5px;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+
+            ion-icon{
+                color: var(--ion-color-primary);
+                font-size: 24px;
+            }
+
+            span{
+                padding-left: 2.5px;
+            }
+        }
+    }
+
+    &__description{
+        white-space: pre-wrap;
+    }
+
+    &__categorization{
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__title{
+            font-weight: bold;
+            color: var(--ion-color-primary);
+        }
+
+        &__list{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+    }
+}

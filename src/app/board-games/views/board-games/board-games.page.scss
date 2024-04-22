@@ -1,5 +1,94 @@
 .board-games {
-    width: 100%;
-    height: 100%;
-    --background: #fff url("../../../../assets/fondo.png") no-repeat center center / cover;
+   max-width: 600px;
+   width: inherit;
+   height: inherit;
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: column;
+
+   &__filters{
+      height: max-content !important;
+      padding-bottom: 10px;
+
+      &__content{
+         padding-bottom: 30px;
+         display: flex;
+         justify-content: center;
+         flex-direction: column;
+         align-items: center;
+
+         &__select{
+            padding-top: 12px;
+            padding-bottom: 2px;
+            max-width: 500px;
+         }
+
+         &__search{
+            padding-top: 5px;
+         }
+      }
+   }
+
+   &__list{
+      overflow: auto;
+      &__content{
+         height: -webkit-fill-available;
+
+         &__item{
+            margin: 5px 0px;
+            display: flex;
+            flex-direction: row;
+
+            :hover{
+               cursor: pointer;
+            }
+   
+            &__img{
+               width: 55px;
+               height: 55px;
+
+               img{
+                  object-fit: contain;
+               }
+            }
+   
+            &__data{
+               display: inline-block;
+               overflow: hidden;
+
+               > * {
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                  margin: 0;
+                  display: block;
+                  overflow: hidden;
+                  -webkit-box-flex: 1;
+                  -webkit-flex: 1;
+                  -ms-flex: 1;
+                  flex: 1;
+                  font-size: inherit;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+               }
+   
+               :first-child{
+                  font-weight: bold;
+                  color: var(--ion-color-primary);
+               }
+            }
+         }
+
+         &__no-res{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            img{
+               width: 40px;
+               height: auto;
+            }
+         }  
+      }
+   }
 }

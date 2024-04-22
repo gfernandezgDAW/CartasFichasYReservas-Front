@@ -13,7 +13,7 @@ export class HomePage {
       return;
     }
 
-    this.email = loggedAsStorage;
+    this.email = loggedAsStorage.trim();
   }
 
   getWelcomeTitle() {

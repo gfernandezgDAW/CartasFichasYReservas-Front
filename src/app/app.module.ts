@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { BoardGamesModule } from './board-games/board-games.module';
 import { BookignsModule } from './bookings/bookings.module';
 import { AuthInterceptor } from './common/interceptors/auth.interceptor';
+import { GenericNetworkErrorInterceptor } from './common/interceptors/error.interceptor';
 import { JwtInterceptor } from './common/interceptors/jwt.interceptor';
 import { SharedModule } from './common/shared.module';
 import { UtilsService } from './common/utils.service';
@@ -41,6 +42,11 @@ register();
     IsAuthenticatedGuard,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GenericNetworkErrorInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

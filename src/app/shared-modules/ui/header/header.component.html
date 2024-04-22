@@ -1,6 +1,11 @@
-<ion-header *ngIf="isMobile" mode="ios">
+<ion-header *ngIf="isMobile || isModal" mode="ios">
   <ion-toolbar class="toolbar" color="primary">
-    <ion-title class="toolbar__title" *ngIf="isMobile">{{title}}</ion-title>
-    <app-profile class="toolbar__profile"></app-profile>
+    <ion-title class="toolbar__title" *ngIf="isMobile || isModal">{{title}}</ion-title>
+    <app-profile class="toolbar__profile" *ngIf="!isModal"></app-profile>
+    <ion-buttons *ngIf="isModal">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>

@@ -1,0 +1,7 @@
+<app-header [isModal]="true" title="Detalle de categoría" (closeModalEvent)="closeModal()"></app-header>
+<div class="modal-content-div">
+    <div *ngIf="entityParam" class="bg-category">
+        <h5 class="bg-category__title">{{entityParam.title}}</h5>
+        <div class="bg-category__description">{{entityParam.description}}</div>
+    </div>
+</div>

@@ -1,11 +1,11 @@
 <app-header title="Inicio"></app-header>
-<ion-content class="home">
-    <div class="home__main-div">
-        <ion-card>
-            <ion-card-content class="home__main-div__content">
-                <img class="home__main-div__content__img" src="../../../assets/logo.svg"> 
-                <ion-text class="home__main-div__content__msg">{{getWelcomeTitle()}}</ion-text>
-                <swiper-container #swiper class="home__main-div__content__swiper" [pagination]="true" autoplay="true" [options]="{initialSlide: 0, loop: true, autoplay: 4000}">
+<ion-content>
+    <div class="main-div">
+        <ion-card class="main-card home">
+            <ion-card-content class="home__content">
+                <img class="home__content__img" src="../../../assets/logo.svg"> 
+                <ion-text class="home__content__msg">{{getWelcomeTitle()}}</ion-text>
+                <swiper-container #swiper class="home__content__swiper" [pagination]="true" autoplay="true" [options]="{initialSlide: 0, loop: true, autoplay: 6000}">
                     <swiper-slide>
                         <img src="../../../assets/home-game.png">
                         <ion-text>Descubre</ion-text>

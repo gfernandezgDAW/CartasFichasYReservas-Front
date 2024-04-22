@@ -1,4 +1,11 @@
-import { Component, HostListener, Injectable, Input } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Injectable,
+  Input,
+  Output,
+} from '@angular/core';
 
 import { UtilsService } from '../../../common/utils.service';
 
@@ -10,6 +17,8 @@ import { UtilsService } from '../../../common/utils.service';
 @Injectable()
 export class HeaderComponent {
   @Input() title: string;
+  @Input() isModal: boolean;
+  @Output() closeModalEvent = new EventEmitter();
   isMobile = false;
   constructor(private utilsService: UtilsService) {
     this.deviceIsMobile();
@@ -22,5 +31,9 @@ export class HeaderComponent {
 
   deviceIsMobile() {
     this.isMobile = this.utilsService.deviceIsMobile();
+  }
+
+  closeModal() {
+    this.closeModalEvent.emit();
   }
 }

@@ -1,0 +1,34 @@
+<app-header [isModal]="true" title="Detalle de juego" (closeModalEvent)="closeModal()"></app-header>
+<div class="modal-content-div">
+    <div *ngIf="entityParam" class="board-game">
+        <h5 class="board-game__title">{{entityParam.title}}</h5>
+        <span class="board-game__introduction">{{entityParam.introduction}}</span>
+        <img class="board-game__img" [ngStyle]="{'max-height': entityParam.coverArtImage ? '300px' : '100px' }" [src]="utilsService.getCompleteImageUrl(entityParam.coverArtImage)">
+        <div class="board-game__details">
+            <div class="board-game__details__item" title="Nº de jugadores">
+                <ion-icon name="people-outline"></ion-icon>
+                <span>{{getPlayerNumbersDataString()}}</span>
+            </div>
+            <div class="board-game__details__item" title="Edad mínima">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>{{entityParam.minAge + "+"}}</span>
+            </div>
+            <div class="board-game__details__item" title="Duración media de partida">
+                <ion-icon name="time-outline"></ion-icon>
+                <span>{{entityParam.averageLength + " mins"}}</span>
+            </div>
+        </div>
+        <div class="board-game__description">{{entityParam.description}}</div>
+        <div class="board-game__categorization">
+            <span class="board-game__categorization__title">Categorías</span>
+            <div *ngIf="!entityParam.categories || !entityParam.categories.length">
+                Juego sin categorizar
+            </div>
+            <div class="board-game__categorization__list" *ngIf="entityParam.categories && entityParam.categories.length">
+                <ion-button fill="outline" *ngFor="let category of entityParam.categories" (click)="openBGCategoryDetailModal(category)">
+                    {{category.title}}
+                </ion-button>
+            </div>
+        </div>
+    </div>
+</div>

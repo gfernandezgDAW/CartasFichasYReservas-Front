@@ -1,2 +1,45 @@
 <app-header title="Juegos"></app-header>
-<ion-content class="board-games">Juegos</ion-content>
+<ion-content>
+    <div class="main-div">
+      <div class="board-games">
+        <ion-card class="main-card board-games__filters">
+          <ion-card-content class="board-games__filters__content">
+            <ion-segment mode="md" value="text" (ionChange)="filterTypeChanged($event)">
+              <ion-segment-button value="text">
+                <ion-label>Texto</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="category">
+                <ion-label>Categoría</ion-label>
+              </ion-segment-button>
+            </ion-segment>
+            <ion-searchbar mode="md" class="board-games__filters__content__search" *ngIf="activeFilterType === 'text'" search-icon="search" placeholder="Buscar" debounce="200" (ionChange)="onSearchBarTextChange($event)" [(ngModel)]="searchBarText"></ion-searchbar>
+            <ion-select #selectCategoryFilter class="board-games__filters__content__select" *ngIf="activeFilterType === 'category'" placeholder="Selecciona una categoría" okText="Aceptar" cancelText="Cancelar" (ionChange)="onSelectedCategoryChange($event)" (ionCancel)="cancelSelectedCategoryFilter()">
+              <div slot="label">Categoría</div>
+              <ion-select-option *ngFor="let category of bgCategories" [value]="category.title">{{category.title}}</ion-select-option>
+            </ion-select>
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="main-card board-games__list">
+            <ion-card-content class="board-games__list__content" [ngStyle]="{'align-content': displayedBoardGames.length ? 'unset' : 'space-around' }">
+                <div *ngIf="displayedBoardGames.length">
+                  <ion-list>
+                    <ion-item *ngFor="let boardGame of displayedBoardGames; let index" class="board-games__list__content__item" [title]="getBoardGameTitle(boardGame)" (click)="openGameDetailModal(boardGame)">
+                      <ion-avatar slot="start" class="board-games__list__content__item__img">
+                        <img [src]="utilsService.getCompleteImageUrl(boardGame.coverArtImage)" />
+                      </ion-avatar>
+                      <div class="board-games__list__content__item__data">
+                        <p>{{ boardGame.title }}</p>
+                        <p>{{ boardGame.introduction }}</p>
+                      </div>
+                    </ion-item>
+                  </ion-list>
+                </div>
+                <div *ngIf="!displayedBoardGames.length" class="board-games__list__content__no-res">
+                  <img src="./../../../../assets/no-results.svg">
+                  <p>Sin resultados</p>
+                </div>
+            </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </ion-content>

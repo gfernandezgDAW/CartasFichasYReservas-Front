@@ -1,0 +1,16 @@
+.bg-category{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title{
+        font-weight: bold;
+        font-size: 20px;
+        color: var(--ion-color-primary);
+        margin-top: 5px;
+    }
+
+    &__description{
+        white-space: pre-wrap;
+    }
+}

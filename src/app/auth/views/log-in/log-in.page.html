@@ -1,11 +1,11 @@
-<ion-content class="log-in">
-    <div class="log-in__main-div">
-        <ion-card class="log-in__form">
-            <ion-card-content class="log-in__main-div__form__content">
-                <img class="log-in__main-div__form__content__logo" src="../../../../assets/logo.svg">
-                <form class="log-in__main-div__form__content__form" [formGroup]="logInForm" (submit)="logInSubmit()">
+<ion-content>
+    <div class="main-div">
+        <ion-card class="main-card log-in">
+            <ion-card-content class="log-in__form__content">
+                <img class="log-in__form__content__logo" src="../../../../assets/logo.svg">
+                <form class="log-in__form__content__form" [formGroup]="logInForm" (submit)="logInSubmit()">
                     <div>
-                        <ion-title class="log-in__main-div__form__content__title">Inicio Sesión - Aplicación</ion-title>
+                        <ion-title class="log-in__form__content__title">Inicio Sesión - Aplicación</ion-title>
                         <ion-item>
                             <ion-input label="Correo" type="email" label-placement="floating" placeholder="ejemplo@gmail.com" formControlName="email"></ion-input>
                         </ion-item>
