@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
-import { UtilsService } from '../../../common/utils.service';
+import { UtilsService } from '../../../common/services/utils.service';
 import { BGCategory } from '../../classes/bg-category.class';
 import { BoardGame } from '../../classes/board-game.class';
 import { BGCategoryModalPage } from '../bg-category-modal/bg-category-modal.modal';

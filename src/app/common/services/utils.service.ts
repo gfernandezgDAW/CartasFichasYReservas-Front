@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 export const MOBILE_MAX_WIDTH = 768;
 
 @Injectable()
 export class UtilsService {
-  constructor(private toastController: ToastController) {}
+  constructor(
+    private toastController: ToastController,
+    private modalController: ModalController
+  ) {}
 
   async displayToast(msg: string, type: 'error' | 'info') {
     const toast = await this.toastController.create({
@@ -48,15 +51,43 @@ export class UtilsService {
   async openModal(
     componentRef: any,
     modalController: ModalController,
-    entityParam: any
+    entityParam?: any,
+    customCssClass = 'modal-autoheight'
   ) {
     const modal = await modalController.create({
       component: componentRef,
       animated: true,
       componentProps: { entityParam },
-      cssClass: 'modal-autoheight',
+      cssClass: customCssClass,
     });
 
-    return await modal.present();
+    await modal.present();
+    return await modal.onDidDismiss();
+  }
+
+  async closeAllActiveModals() {
+    const currentTopModal = await this.modalController.getTop();
+    if (!currentTopModal) {
+      return;
+    }
+
+    this.recursivelyCloseAllActiveModals(currentTopModal);
+  }
+
+  private recursivelyCloseAllActiveModals(topModal: HTMLIonModalElement) {
+    return new Promise((resolve) => {
+      topModal.dismiss().then(async () => {
+        const currentTopModal = await this.modalController.getTop();
+        resolve(
+          currentTopModal
+            ? this.recursivelyCloseAllActiveModals(currentTopModal)
+            : true
+        );
+      });
+    });
+  }
+
+  stringToTitleCase(string: string) {
+    return string[0].toUpperCase() + string.slice(1).toLowerCase();
   }
 }

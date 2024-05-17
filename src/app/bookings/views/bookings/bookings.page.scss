@@ -1,2 +1,81 @@
 .bookings {
-}
+    max-width: 600px;
+    width: inherit;
+    height: inherit;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    &__actions{
+      width: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &__btn-new{
+         width: min-content;
+         font-weight: bold;
+
+         ion-icon{
+            font-size: 24;
+            margin-left: 5px;
+            padding: 0;
+            --ionicon-stroke-width: 64px;
+         }
+      }
+    }
+ 
+    &__list{
+       overflow: auto;
+       &__content{
+          height: -webkit-fill-available;
+ 
+          &__item{
+             margin: 5px 0px;
+             display: flex;
+             flex-direction: row;
+ 
+             :hover{
+                cursor: pointer;
+             }
+    
+             &__data{
+                display: inline-block;
+                overflow: hidden;
+ 
+                > * {
+                   white-space: nowrap;
+                   text-overflow: ellipsis;
+                   margin: 0;
+                   display: block;
+                   overflow: hidden;
+                   -webkit-box-flex: 1;
+                   -webkit-flex: 1;
+                   -ms-flex: 1;
+                   flex: 1;
+                   font-size: inherit;
+                   text-overflow: ellipsis;
+                   white-space: nowrap;
+                }
+    
+                :first-child{
+                   font-weight: bold;
+                   color: var(--ion-color-primary);
+                }
+             }
+          }
+ 
+          &__no-res{
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             flex-direction: column;
+ 
+             img{
+                width: 40px;
+                height: auto;
+             }
+          }  
+       }
+    }
+ }

@@ -5,7 +5,7 @@ import { SharedModule } from '../common/shared.module';
 
 import { BoardGamesService } from './board-games.service';
 import { BGCategoryModalPage } from './views/bg-category-modal/bg-category-modal.modal';
-import { BoardGameModalPage } from './views/board-game/board-game.modal';
+import { BoardGameModalPage } from './views/board-game-modal/board-game.modal';
 import { BoardGamesPage } from './views/board-games/board-games.page';
 
 @NgModule({

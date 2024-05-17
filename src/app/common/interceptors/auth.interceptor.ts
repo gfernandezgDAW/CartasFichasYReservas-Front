@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 
 import { AuthUtilsService } from '../../auth/auth-utils.service';
-import { UtilsService } from '../utils.service';
+import { UtilsService } from '../services/utils.service';
 
 export const AUTH_ERROR_CODES = [401, 403];
 

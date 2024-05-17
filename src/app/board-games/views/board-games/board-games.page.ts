@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { first } from 'rxjs';
 
 import { IonSelect, ModalController } from '@ionic/angular';
-import { UtilsService } from '../../../common/utils.service';
+import { UtilsService } from '../../../common/services/utils.service';
 import { BoardGamesService } from '../../board-games.service';
 import { BGCategory } from '../../classes/bg-category.class';
 import { BoardGame } from '../../classes/board-game.class';
-import { BoardGameModalPage } from '../board-game/board-game.modal';
+import { BoardGameModalPage } from '../board-game-modal/board-game.modal';
 
 @Component({
   selector: 'app-board-games',
@@ -14,7 +14,6 @@ import { BoardGameModalPage } from '../board-game/board-game.modal';
   styleUrls: ['board-games.page.scss'],
 })
 export class BoardGamesPage implements OnInit {
-  displayedGames = 10;
   @ViewChild('selectCategoryFilter') selectCategoryFilterElement: IonSelect;
   boardGames: BoardGame[] = [];
   displayedBoardGames: BoardGame[] = [];

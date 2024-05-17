@@ -1,2 +1,39 @@
 <app-header title="Reservas"></app-header>
-<ion-content>Reservas</ion-content>
+<ion-content>
+    <div class="main-div">
+      <div class="bookings">
+        <div class="bookings__actions">
+          <ion-button class="bookings__actions__btn-new" (click)="openBookingNewModal()">
+            Nueva reserva
+            <ion-icon name="add-outline"></ion-icon>
+          </ion-button>
+        </div>
+        <ion-card class="main-card bookings__list">
+            <ion-card-content class="bookings__list__content" [ngStyle]="{'align-content': bookings.length ? 'unset' : 'space-around' }">
+                <div *ngIf="bookings.length">
+                  <ion-list>
+                    <ion-item *ngFor="let booking of bookings" class="bookings__list__content__item" (click)="openBookingViewModal(booking)">
+                      <div class="bookings__list__content__item__data">
+                        <p>{{getBookingTime(booking)}}</p>
+                        <span>
+                          {{'Sitio: ' + booking.bookableSpace.spaceNumber + ' - Nº de participantes: ' + booking.participants }}
+                        </span>
+                        <span>
+                          {{'Juego: ' + booking.boardGame.title}}
+                        </span>
+                        <span>
+                          {{'Estado: ' + booking.status}}
+                        </span>
+                      </div>
+                    </ion-item>
+                  </ion-list>
+                </div>
+                <div *ngIf="!bookings.length" class="bookings__list__content__no-res">
+                  <img src="./../../../../assets/no-results.svg">
+                  <p>No se encontraron reservas</p>
+                </div>
+            </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+</ion-content>

@@ -1,6 +1,6 @@
 import { Component, HostListener, Injectable } from '@angular/core';
 
-import { UtilsService } from '../../../../common/utils.service';
+import { UtilsService } from '../../../../common/services/utils.service';
 
 @Component({
   selector: 'app-tabs',

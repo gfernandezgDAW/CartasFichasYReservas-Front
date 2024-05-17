@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 
-import { UtilsService } from '../../../common/utils.service';
+import { UtilsService } from '../../../common/services/utils.service';
 
 @Component({
   selector: 'app-header',

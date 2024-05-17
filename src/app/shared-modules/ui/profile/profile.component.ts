@@ -1,7 +1,7 @@
 import { Component, HostListener, Injectable, Input } from '@angular/core';
 
 import { AuthUtilsService } from '../../../auth/auth-utils.service';
-import { UtilsService } from '../../../common/utils.service';
+import { UtilsService } from '../../../common/services/utils.service';
 
 @Component({
   selector: 'app-profile',

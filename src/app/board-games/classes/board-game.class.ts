@@ -1,6 +1,7 @@
 import { BGCategory } from './bg-category.class';
 
 export class BoardGame {
+  id: string;
   title: string;
   introduction: string;
   description: string;
@@ -9,5 +10,6 @@ export class BoardGame {
   maxPlayers: number;
   averageLength: number;
   minAge: number;
+  unitsAvaliable: number;
   categories?: BGCategory[];
 }

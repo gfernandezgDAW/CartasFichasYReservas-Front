@@ -236,8 +236,6 @@ html {
   --ion-dynamic-font: var(--ion-default-dynamic-font);
 }
 
-$mobile-max-width: 768px;
-
 // Estilos Ionic sobreescritos
 ion-button {
   text-transform: none;
@@ -271,14 +269,19 @@ ion-modal.modal-default.show-modal:last-of-type {
   --backdrop-opacity: var(--ion-backdrop-opacity, 0.22) !important;
 }
 
-//Estilos custom
-ion-modal.modal-autoheight {
+//Estilos personalizados de modales
+ion-modal.modal-autoheight-extended-width{
+  --max-width: 1000px;
+  --width: 100%;
+}
+
+ion-modal.modal-autoheight, ion-modal.modal-autoheight-extended-width {
+  --height: auto;
 
   &.bottom {
       align-items: flex-end;
   }
 
-  --height: auto;
   .ion-page {
       position: relative;
       display: block;

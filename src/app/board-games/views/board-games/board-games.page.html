@@ -23,7 +23,7 @@
             <ion-card-content class="board-games__list__content" [ngStyle]="{'align-content': displayedBoardGames.length ? 'unset' : 'space-around' }">
                 <div *ngIf="displayedBoardGames.length">
                   <ion-list>
-                    <ion-item *ngFor="let boardGame of displayedBoardGames; let index" class="board-games__list__content__item" [title]="getBoardGameTitle(boardGame)" (click)="openGameDetailModal(boardGame)">
+                    <ion-item *ngFor="let boardGame of displayedBoardGames" class="board-games__list__content__item" [title]="getBoardGameTitle(boardGame)" (click)="openGameDetailModal(boardGame)">
                       <ion-avatar slot="start" class="board-games__list__content__item__img">
                         <img [src]="utilsService.getCompleteImageUrl(boardGame.coverArtImage)" />
                       </ion-avatar>
@@ -36,7 +36,7 @@
                 </div>
                 <div *ngIf="!displayedBoardGames.length" class="board-games__list__content__no-res">
                   <img src="./../../../../assets/no-results.svg">
-                  <p>Sin resultados</p>
+                  <p>No se encontraron juegos</p>
                 </div>
             </ion-card-content>
         </ion-card>

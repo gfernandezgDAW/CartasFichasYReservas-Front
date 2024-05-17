@@ -1,0 +1,123 @@
+<app-header [isModal]="true" title="Nueva reserva" (closeModalEvent)="closeModal()"></app-header>
+<div class="modal-content-div">
+    <div class="booking">
+        <ion-accordion-group class="booking__accordion" [value]="oppenedAccordion">
+            <ion-accordion value="1" toggleIcon="">
+              <ion-item slot="header" color="light">
+                <ion-label>{{'1 • Fecha y horario' + showDatesFormDetail()}}</ion-label>
+              </ion-item>
+              <div class="booking__accordion__content" slot="content">
+                <form class="booking__accordion__content__form" [formGroup]="datesForm">
+                  <ion-item>
+                    <ion-input value="{{ date | date: 'dd/MM/yyyy' }}" id="date" label="Fecha"></ion-input>
+                    <ion-popover trigger="date" >
+                        <ng-template>
+                            <ion-datetime presentation="date" [(ngModel)]="date" formControlName="date" [showDefaultButtons]="true" doneText="Confirmar" cancelText="Cancelar"></ion-datetime>
+                        </ng-template>
+                    </ion-popover>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input value="{{ startOf | date: 'HH:mm' : 'UTC' }}" id="startOf" label="Hora Inicio"></ion-input>
+                    <ion-popover trigger="startOf" >
+                        <ng-template>
+                            <ion-datetime presentation="time" [(ngModel)]="startOf" formControlName="startOf" [min]="minTimeStartOf" [max]="maxTimeStartOf" [showDefaultButtons]="true" doneText="Confirmar" cancelText="Cancelar" [minuteValues]="minuteValues" (ngModelChange)="updateDateInput($event,'startOf')"></ion-datetime>
+                        </ng-template>
+                    </ion-popover>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input value="{{ endOf | date: 'HH:mm' : 'UTC' }}" id="endOf" label="Hora Fin"></ion-input>
+                    <ion-popover trigger="endOf" >
+                        <ng-template>
+                            <ion-datetime presentation="time" [(ngModel)]="endOf" formControlName="endOf" [min]="minTimeEndOf" [max]="maxTimeEndOf" [showDefaultButtons]="true" doneText="Confirmar" cancelText="Cancelar" [minuteValues]="minuteValues" (ngModelChange)="updateDateInput($event,'endOf')"></ion-datetime>
+                        </ng-template>
+                    </ion-popover>
+                  </ion-item>
+                  <div class="booking__accordion__content__form__actions">
+                    <ion-button type="submit" color="primary" [disabled]="!datesForm.valid" (click)="changeCurrentForm(2)">Confirmar</ion-button>
+                  </div>
+                </form>
+              </div>
+            </ion-accordion>
+            <ion-accordion value="2" toggleIcon="">
+              <ion-item slot="header" color="light">
+                <ion-label>{{'2 • Sitio' + showBookableSpaceFormDetail()}}</ion-label>
+              </ion-item>
+              <div class="booking__accordion__content" slot="content">
+                <form class="booking__accordion__content__form" [formGroup]="bookableSpaceForm">
+                  <ion-item>
+                    <ion-select placeholder="Selecciona el número de participantes" okText="Aceptar" cancelText="Cancelar" formControlName="participants" (ionChange)="onChangeParticipantsNumber($event)">
+                      <div slot="label">Nº de participantes</div>
+                      <ion-select-option *ngFor="let capacity of spaceCapacity" [value]="capacity">{{capacity}}</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                  <ion-item *ngIf="!availableBookableSpaces.length && bookableSpaceForm.controls.participants.value && currentForm === 2">
+                    {{'No se encontraron sitios disponibles en ese horario y/o número de participantes. Intentalo de nuevo con otra configuración'}}
+                  </ion-item>
+                  <ion-item class="booking__accordion__content__form__map" *ngIf="displayMapChecks()" lines="none">
+                    <img class="booking__accordion__content__form__map__img-base" src="./../../../../assets/map.svg" alt="Mapa de sitios">
+                    <ion-icon *ngFor="let bookableSpace of allBookableSpaces; index as i" class="booking__accordion__content__form__map__img-float" [ngClass]="getBookableSpaceImageColorClass(bookableSpace.status)" [src]="bookingsUtilsService.getBookableSpaceFileName(bookableSpace.spaceNumber)" [style]="bookingsUtilsService.getBookableSpaceMapStyle(bookableSpace)" [title]="showBookableSpaceDetail(bookableSpace, false, true)" (click)="onBookableSpaceMapClicked(bookableSpace,i)"></ion-icon>
+                  </ion-item>
+                  <ion-item *ngIf="displayMapChecks()" lines="none">
+                    <div  class="booking__accordion__content__form__legend">
+                      <div>
+                        <span class="booking__accordion__content__form__legend__ocupado"></span>
+                        <span>Ocupado y/o sin capacidad</span>
+                      </div>
+                      <div>
+                        <span class="booking__accordion__content__form__legend__libre"></span>
+                        <span>Libre</span>
+                      </div>
+                      <div>
+                        <span class="booking__accordion__content__form__legend__seleccionado"></span>
+                        <span>Seleccionado</span>
+                      </div>
+                    </div>
+                  </ion-item>
+                  <ion-item *ngIf="availableBookableSpaces.length">
+                    <ion-select placeholder="Selecciona un sitio" okText="Aceptar" cancelText="Cancelar" formControlName="bookableSpace" (ionChange)="onBookableSpaceSelectedInSelector($event)">
+                      <div slot="label">Sitio</div>
+                      <ion-select-option *ngFor="let bookableSpace of availableBookableSpaces" [value]="bookableSpace">{{showBookableSpaceDetail(bookableSpace, false)}}</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                  <div class="booking__accordion__content__form__actions">
+                    <ion-button type="button" color="danger" (click)="changeCurrentForm(1)">Volver</ion-button>
+                    <ion-button *ngIf="availableBookableSpaces.length" type="submit" color="primary" [disabled]="!bookableSpaceForm.valid" (click)="changeCurrentForm(3)">Confirmar</ion-button>
+                  </div>
+                </form>
+              </div>
+            </ion-accordion>
+            <ion-accordion value="3" toggleIcon="">
+              <ion-item slot="header" color="light">
+                <ion-label>{{'3 • Juego' + showBoardGameFormDetail()}}</ion-label>
+              </ion-item>
+              <div class="booking__accordion__content" slot="content">
+                <form class="booking__accordion__content__form" [formGroup]="boardGameForm">
+                  <ion-item *ngIf="!availableBoardGames.length && currentForm === 3">
+                    {{'No se encontraron juegos disponibles en ese horario. Intentalo de nuevo con otra configuración'}}
+                  </ion-item>
+                  <ion-item *ngIf="availableBoardGames.length">
+                    <ion-select placeholder="Selecciona un juego" okText="Aceptar" cancelText="Cancelar" formControlName="boardGame">
+                      <div slot="label">Juego</div>
+                      <ion-select-option *ngFor="let boardGame of availableBoardGames" [value]="boardGame">{{boardGame.title}}</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                  <div class="booking__accordion__content__form__actions">
+                    <ion-button type="button" color="primary" fill="outline" (click)="openGameDetailModal()" [disabled]="!boardGameForm || !boardGameForm.value.boardGame">Ver detalle</ion-button>
+                    <ion-button type="button" color="danger" (click)="changeCurrentForm(2)">Volver</ion-button>
+                    <ion-button *ngIf="availableBoardGames.length" type="submit" color="primary" [disabled]="!boardGameForm.valid" (click)="changeCurrentForm(4)">Confirmar</ion-button>
+                  </div>
+                </form>
+              </div>
+            </ion-accordion>
+         </ion-accordion-group>
+         <ion-card id="confirmCard" *ngIf="currentForm === 4">
+            <ion-card-content>
+              <span>Revisa los datos y confirma la reserva</span>
+              <div class="booking__accordion__content__form__actions">
+                <ion-button type="button" color="danger" (click)="changeCurrentForm(3)">Volver</ion-button>
+                <ion-button type="submit" color="primary" (click)="confirmBooking()">Reservar</ion-button>
+              </div>
+            </ion-card-content>
+         </ion-card>
+    </div>
+</div>
