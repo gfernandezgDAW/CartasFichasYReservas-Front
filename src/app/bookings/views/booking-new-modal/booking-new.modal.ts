@@ -237,7 +237,7 @@ export class BookingNewModalPage {
       return;
     }
 
-    return `Sitio: ${bookableSpace.spaceNumber} - Capacidad: ${
+    return ` ${bookableSpace.spaceNumber} - Capacidad: ${
       bookableSpace.capacity
     }${
       displaySelectedParticipants
