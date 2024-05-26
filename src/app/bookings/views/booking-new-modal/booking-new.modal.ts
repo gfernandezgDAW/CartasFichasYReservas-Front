@@ -323,7 +323,7 @@ export class BookingNewModalPage {
       return '';
     }
 
-    return `booking__accordion__content__form__map__img-float__${status}`;
+    return `booking-new__accordion__content__form__map__img-float__${status}`;
   }
 
   onBookableSpaceMapClicked(

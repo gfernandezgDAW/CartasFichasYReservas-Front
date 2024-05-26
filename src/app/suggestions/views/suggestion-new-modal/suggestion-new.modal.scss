@@ -1,0 +1,17 @@
+.suggestion-new{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+
+    &__form{
+        width: 95%;
+
+        &__actions{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    }
+}

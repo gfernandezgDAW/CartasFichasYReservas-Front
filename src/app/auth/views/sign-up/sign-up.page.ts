@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
-import { UtilsService } from '../../../common/services/utils.service';
+
+import {
+  UtilsService,
+  fieldIsNotEmpty,
+} from '../../../common/services/utils.service';
 import { AuthService } from '../../auth.service';
 
 @Component({
@@ -12,7 +16,7 @@ import { AuthService } from '../../auth.service';
 })
 export class SignUpPage {
   signUpForm = this.fromBuilder.group({
-    username: ['', [Validators.required]],
+    username: ['', [Validators.required, fieldIsNotEmpty]],
     dni: [
       '',
       [Validators.required, Validators.pattern('^[0-9]{8,8}[A-Za-z]$')],

@@ -1,2 +1,31 @@
 <app-header title="Sugerencias"></app-header>
-<ion-content>Sugerencias</ion-content>
+<ion-content>
+    <div class="main-div">
+      <div class="suggestions">
+        <div class="suggestions__actions">
+          <ion-button class="suggestions__actions__btn-new" (click)="openSuggestionNewModal()">
+            Nueva sugerencia
+            <ion-icon name="add-outline"></ion-icon>
+          </ion-button>
+        </div>
+        <ion-card class="main-card suggestions__list">
+            <ion-card-content class="suggestions__list__content" [ngStyle]="{'align-content': suggestions.length ? 'unset' : 'space-around' }">
+                <div *ngIf="suggestions.length">
+                  <ion-list>
+                    <ion-item *ngFor="let suggestion of suggestions" class="suggestions__list__content__item" (click)="openSuggestionViewModal(suggestion)">
+                      <div class="suggestions__list__content__item__data">
+                        <p>{{getSuggestionTitle(suggestion)}}</p>
+                        <span>{{'Estado: ' + suggestion.status}}</span>
+                      </div>
+                    </ion-item>
+                  </ion-list>
+                </div>
+                <div *ngIf="!suggestions.length" class="suggestions__list__content__no-res">
+                  <img src="./../../../../assets/no-results.svg">
+                  <p>No se encontraron sugerencias</p>
+                </div>
+            </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+</ion-content>

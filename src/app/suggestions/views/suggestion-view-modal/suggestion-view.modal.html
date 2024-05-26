@@ -1,0 +1,14 @@
+<app-header [isModal]="true" title="Detalle de la sugerencia" (closeModalEvent)="closeModal()"></app-header>
+<div class="modal-content-div">
+    <div *ngIf="entityParam" class="suggestion-view">
+        <h5 class="suggestion-view__title">{{entityParam.title}}</h5>
+        <div class="suggestion-view__description">{{entityParam.description}}</div>
+        <ion-accordion-group class="suggestion-view__accordion">
+            <ion-accordion value="1" toggleIcon="">
+              <ion-item slot="header" color="light">
+                <ion-label><ion-icon name="alert-circle-outline"></ion-icon>{{' • Estado: ' + entityParam.status}}</ion-label>
+              </ion-item>
+            </ion-accordion>
+        </ion-accordion-group>
+    </div>
+</div>

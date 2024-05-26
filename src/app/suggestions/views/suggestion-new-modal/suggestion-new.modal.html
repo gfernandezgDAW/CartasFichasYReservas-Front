@@ -1,0 +1,16 @@
+<app-header [isModal]="true" title="Nueva sugerencia" (closeModalEvent)="closeModal()"></app-header>
+<div class="modal-content-div">
+    <div class="suggestion-new">
+        <form class="suggestion-new__form" [formGroup]="suggestionForm" (submit)="newSuggestionSubmit()">
+            <ion-item>
+                <ion-input label="Título" type="title" label-placement="floating" placeholder="Título de la sugerencia" formControlName="title"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-textarea label="Descripción" type="description" label-placement="floating" placeholder="Solicitar cambios en una reserva, añadir un nuevo juego, etc" formControlName="description" [autoGrow]="true"></ion-textarea>
+            </ion-item>
+            <div class="suggestion-new__form__actions">
+                <ion-button type="submit" [disabled]="!suggestionForm.valid">Enviar</ion-button>
+            </div>
+        </form>
+    </div>
+</div>

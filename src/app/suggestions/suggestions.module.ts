@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../common/shared.module';
 import { SuggestionsService } from './suggestions.service';
+import { SuggestionNewModalModalPage } from './views/suggestion-new-modal/suggestion-new.modal';
+import { SuggestionViewModalPage } from './views/suggestion-view-modal/suggestion-view.modal';
 import { SuggestionsPage } from './views/suggestions/suggestions.page';
 
 @NgModule({
@@ -16,6 +18,10 @@ import { SuggestionsPage } from './views/suggestions/suggestions.page';
     ]),
   ],
   providers: [SuggestionsService],
-  declarations: [SuggestionsPage],
+  declarations: [
+    SuggestionsPage,
+    SuggestionNewModalModalPage,
+    SuggestionViewModalPage,
+  ],
 })
 export class SuggestionsModule {}

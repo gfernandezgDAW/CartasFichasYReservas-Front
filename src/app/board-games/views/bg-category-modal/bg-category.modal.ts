@@ -5,8 +5,8 @@ import { BGCategory } from '../../classes/bg-category.class';
 
 @Component({
   selector: 'app-bg-category',
-  templateUrl: 'bg-category-modal.modal.html',
-  styleUrls: ['bg-category-modal.modal.scss'],
+  templateUrl: 'bg-category.modal.html',
+  styleUrls: ['bg-category.modal.scss'],
 })
 export class BGCategoryModalPage {
   @Input() entityParam: BGCategory;

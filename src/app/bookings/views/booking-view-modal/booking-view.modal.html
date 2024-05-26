@@ -1,7 +1,7 @@
 <app-header [isModal]="true" title="Detalle de reserva" (closeModalEvent)="closeModal()"></app-header>
 <div class="modal-content-div">
-    <div *ngIf="entityParam" class="booking">
-        <ion-accordion-group class="booking__accordion">
+    <div *ngIf="entityParam" class="booking-view">
+        <ion-accordion-group class="booking-view__accordion">
             <ion-accordion value="1" toggleIcon="">
               <ion-item slot="header" color="light">
                 <ion-label><ion-icon name="time-outline"></ion-icon>{{' • Fecha y horario: ' + showBookingDates()}}</ion-label>
@@ -12,9 +12,9 @@
                   <ion-label><ion-icon name="location-outline"></ion-icon>{{' • Sitio: ' + showBookingBookablePlaceDetail()}}</ion-label>
                 </ion-item>
             </ion-accordion>
-            <div class="booking__accordion__map" *ngIf="displayMapChecks()">
-                <img class="booking__accordion__map__img-base" src="./../../../../assets/map.svg" alt="Mapa de sitios">
-                <ion-icon *ngFor="let bookableSpace of allBookableSpaces; index as i" class="booking__accordion__map__img-float" [ngClass]="{'booking__accordion__map__img-float__selected' : bookableSpace?.status && bookableSpace.status === 'seleccionado'}" [src]="bookingsUtilsService.getBookableSpaceFileName(bookableSpace.spaceNumber)" [style]="bookingsUtilsService.getBookableSpaceMapStyle(bookableSpace)" [title]="showBookableSpaceDetail(bookableSpace, true)"></ion-icon>
+            <div class="booking-view__accordion__map" *ngIf="displayMapChecks()">
+                <img class="booking-view__accordion__map__img-base" src="./../../../../assets/map.svg" alt="Mapa de sitios">
+                <ion-icon *ngFor="let bookableSpace of allBookableSpaces; index as i" class="booking-view__accordion__map__img-float" [ngClass]="{'booking-view__accordion__map__img-float__selected' : bookableSpace?.status && bookableSpace.status === 'seleccionado'}" [src]="bookingsUtilsService.getBookableSpaceFileName(bookableSpace.spaceNumber)" [style]="bookingsUtilsService.getBookableSpaceMapStyle(bookableSpace)" [title]="showBookableSpaceDetail(bookableSpace, true)"></ion-icon>
             </div>
             <ion-accordion value="3" toggleIcon="">
                 <ion-item slot="header" color="light">
@@ -27,7 +27,7 @@
               </ion-item>
           </ion-accordion>
         </ion-accordion-group>
-        <div class="booking__actions">
+        <div class="booking-view__actions">
             <ion-button type="button" color="primary" fill="outline" (click)="openGameDetailModal()">Ver detalle de juego</ion-button>
             <ion-button type="button" color="danger" *ngIf="displayCancelBookingBtn()" (click)="cancelBooking()">Cancelar reserva</ion-button>
         </div>

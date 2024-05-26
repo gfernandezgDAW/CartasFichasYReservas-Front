@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 import { ModalController, ToastController } from '@ionic/angular';
 
 import { environment } from '../../../environments/environment';
 
 export const MOBILE_MAX_WIDTH = 768;
+
+export function fieldIsNotEmpty(control: AbstractControl) {
+  const trimmedValue = control.value.trim();
+  if (trimmedValue.length) {
+    return null;
+  }
+
+  return { fieldIsNotEmpty: false };
+}
 
 @Injectable()
 export class UtilsService {

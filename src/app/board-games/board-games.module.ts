@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../common/shared.module';
 
 import { BoardGamesService } from './board-games.service';
-import { BGCategoryModalPage } from './views/bg-category-modal/bg-category-modal.modal';
+import { BGCategoryModalPage } from './views/bg-category-modal/bg-category.modal';
 import { BoardGameModalPage } from './views/board-game-modal/board-game.modal';
 import { BoardGamesPage } from './views/board-games/board-games.page';
 

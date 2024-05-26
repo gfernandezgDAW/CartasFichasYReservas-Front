@@ -1,0 +1,47 @@
+.suggestion-view{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title{
+        font-weight: bold;
+        font-size: 20px;
+        color: var(--ion-color-primary);
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    &__description{
+        white-space: pre-wrap;
+        border-bottom: 1px solid var(--ion-color-primary);
+        padding-bottom: 5px;
+        width: 100%;
+    }
+
+    &__accordion{
+        margin: 5px;
+        width: 100%;
+
+        ion-item[slot="header"]{
+            &::part(native){
+                background-color: var(--ion-color-primary);
+                color: white;
+                font-weight: bold;
+
+                ion-icon{
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+
+            ion-icon{
+                vertical-align: bottom;
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+ion-accordion::part(header){
+    pointer-events: none;
+}
