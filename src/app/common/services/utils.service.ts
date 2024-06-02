@@ -38,10 +38,19 @@ export class UtilsService {
 
   getCompleteImageUrl(imgName: string | undefined) {
     if (!imgName) {
-      return '../../assets/no-image.svg';
+      return this.getNoImageFoundUrl();
     }
 
     return `${environment.apiUrl}/${imgName}`;
+  }
+
+  getNoImageFoundUrl() {
+    return '../../assets/no-image.svg';
+  }
+
+  noImageFoundEvent(e: Event) {
+    const target = e.target as HTMLInputElement;
+    target.src = this.getNoImageFoundUrl();
   }
 
   orderArrayByProperty(array: any[], property: string, order: 'ASC' | 'DESC') {

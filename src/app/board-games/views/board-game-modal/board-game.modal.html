@@ -3,7 +3,7 @@
     <div *ngIf="entityParam" class="board-game">
         <h5 class="board-game__title">{{entityParam.title}}</h5>
         <span class="board-game__introduction">{{entityParam.introduction}}</span>
-        <img class="board-game__img" [ngStyle]="{'max-height': entityParam.coverArtImage ? '300px' : '100px' }" [src]="utilsService.getCompleteImageUrl(entityParam.coverArtImage)">
+        <img class="board-game__img" [ngStyle]="{'max-height': entityParam.coverArtImage ? '300px' : '100px' }" [src]="utilsService.getCompleteImageUrl(entityParam.coverArtImage)" (error)="utilsService.noImageFoundEvent($event)">
         <div class="board-game__details">
             <div class="board-game__details__item" title="Nº de jugadores">
                 <ion-icon name="people-outline"></ion-icon>

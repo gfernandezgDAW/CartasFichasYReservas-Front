@@ -25,7 +25,7 @@
                   <ion-list>
                     <ion-item *ngFor="let boardGame of displayedBoardGames" class="board-games__list__content__item" [title]="getBoardGameTitle(boardGame)" (click)="openGameDetailModal(boardGame)">
                       <ion-avatar slot="start" class="board-games__list__content__item__img">
-                        <img [src]="utilsService.getCompleteImageUrl(boardGame.coverArtImage)" />
+                        <img [src]="utilsService.getCompleteImageUrl(boardGame.coverArtImage)" (error)="utilsService.noImageFoundEvent($event)"/>
                       </ion-avatar>
                       <div class="board-games__list__content__item__data">
                         <p>{{ boardGame.title }}</p>
